@@ -37,7 +37,7 @@ public class KafkaServiceImpl implements KafkaService {
         }
     }
 
-    @KafkaListener(topics = "newCustomerCreated", groupId = "customers")
+    @KafkaListener(topics = "newCustomerCreated", groupId = "users")
     public void readMessage(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
         LOGGER.info(".:: Received message {} from partition {} ::.", message, partition);
     }
