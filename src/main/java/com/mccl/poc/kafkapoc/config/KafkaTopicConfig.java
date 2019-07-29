@@ -16,6 +16,9 @@ public class KafkaTopicConfig {
     @Value("${kafka.bootstrapAddress}")
     private String bootstrapAddress;
 
+    @Value("${kafka.newCustomerCreatedTopic}")
+    private String newCustomerCreatedTopic;
+
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
@@ -25,6 +28,6 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topicNewCustomerCreated() {
-        return new NewTopic("newCustomerCreated", 1, (short)1);
+        return new NewTopic(newCustomerCreatedTopic, 3, (short)1);
     }
 }
